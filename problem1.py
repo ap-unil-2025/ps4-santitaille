@@ -21,6 +21,7 @@ def create_number_list(start, end):
     """
     # TODO: Implement this function
     # Hint: Use range() and convert to list
+    return list(range(start, end + 1))
     pass
 
 
@@ -40,6 +41,7 @@ def filter_even_numbers(numbers):
     """
     # TODO: Implement this function
     # You can use a loop or list comprehension
+    return [n for n in numbers if n % 2 == 0]
     pass
 
 
@@ -59,6 +61,7 @@ def square_numbers(numbers):
     """
     # TODO: Implement this function
     # Hint: Try a list comprehension!
+    return [n ** 2 for n in numbers]
     pass
 
 
@@ -78,6 +81,7 @@ def find_max_min(numbers):
     """
     # TODO: Implement this function
     # You can use max() and min() built-in functions
+    return max(numbers), min(numbers)
     pass
 
 
@@ -98,6 +102,13 @@ def remove_duplicates(items):
     # TODO: Implement this function
     # Hint: You can use a loop and check if item is already in result list
     # Or convert to set and back to list (but this doesn't preserve order)
+    seen = set()
+    result = []
+    for item in items:
+        if item not in seen:
+            seen.add(item)
+            result.append(item)
+    return result
     pass
 
 
@@ -121,6 +132,16 @@ def merge_lists(list1, list2):
     """
     # TODO: Implement this function
     # Hint: Use a loop with index, handle different lengths
+    merged = []
+    max_len = max(len(list1), len(list2))
+
+    for i in range(max_len):
+        if i < len(list1):
+            merged.append(list1[i])
+        if i < len(list2):
+            merged.append(list2[i])
+
+    return merged
     pass
 
 
@@ -143,6 +164,13 @@ def list_statistics(numbers):
 
     # TODO: Implement this function
     # Calculate and return a dictionary with the statistics
+    return {
+        'sum': sum(numbers),
+        'average': sum(numbers) / len(numbers),
+        'count': len(numbers),
+        'max': max(numbers),
+        'min': min(numbers)
+    }
     pass
 
 
@@ -163,6 +191,7 @@ def chunk_list(items, chunk_size):
     """
     # TODO: Implement this function
     # Hint: Use list slicing in a loop
+    return [items[i:i + chunk_size] for i in range(0, len(items), chunk_size)]
     pass
 
 
